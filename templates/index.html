@@ -1,0 +1,51 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variação de Entalpia</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h3 class="center-align">Cálculo da Variação de Entalpia</h3>
+        <div class="row">
+            <form method="POST" class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <select name="temperature" required>
+                            <option value="" disabled selected>Escolha a temperatura</option>
+                            <option value="350">350 K</option>
+                            <option value="400">400 K</option>
+                            <option value="450">450 K</option>
+                        </select>
+                        <label>Temperatura</label>
+                    </div>
+                </div>
+                <div class="row center-align">
+                    <button type="submit" class="btn waves-effect waves-light">Calcular</button>
+                </div>
+            </form>
+        </div>
+
+        {% if result %}
+        <div class="row">
+            <div class="col s12 center-align">
+                <h5>Variação de entalpia:</h5>
+                <h4>{{ result }} J</h4>
+                <a href="{{ url_for('memorial') }}" class="btn waves-effect waves-light">Ver memorial de cálculo</a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            M.FormSelect.init(elems);
+        });
+    </script>
+</body>
+</html>
